@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.MainWindowController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="New Database..." />
+                  <MenuItem mnemonicParsing="false" text="Load Database..." />
+                  <MenuItem mnemonicParsing="false" text="Save Database" />
+                  <MenuItem mnemonicParsing="false" text="Save Database as..." />
+                  <MenuItem fx:id="exitButton" mnemonicParsing="false" onAction="#exitButtonPushed" text="Exit" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Activities">
+              <items>
+                <MenuItem fx:id="addActivity" mnemonicParsing="false" onAction="#addActivityButtonPushed" text="Add Activity..." />
+                  <MenuItem fx:id="removeActivity" mnemonicParsing="false" text="Remove Activity..." />
+              </items>
+            </Menu>
+          <Menu mnemonicParsing="false" text="View">
+               <items>
+                  <RadioMenuItem mnemonicParsing="false" text="Last Day" />
+                  <RadioMenuItem mnemonicParsing="false" text="Last Month" />
+                  <RadioMenuItem mnemonicParsing="false" text="Last Year" />
+                  <RadioMenuItem mnemonicParsing="false" text="All-Time" />
+               </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date" />
+          <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+            <TableColumn fx:id="durationColumn" prefWidth="75.0" text="Duration" />
+            <TableColumn fx:id="descriptionColumn" maxWidth="1000.0" minWidth="100.0" prefWidth="252.0" text="Description" />
+        </columns>
+      </TableView>
+   </center>
+   <padding>
+      <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+   </padding>
+</BorderPane>
