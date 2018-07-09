@@ -4,9 +4,14 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
 import java.time.LocalDate;
 
+/**
+ * Main Activity class
+ */
 public class Activity {
-    private LocalDate date;
 
+    /**
+     * Getters/Setters
+     */
     public LocalDate getDate() {
         return date;
     }
@@ -51,9 +56,16 @@ public class Activity {
         this.duration.set(duration);
     }
 
+    /**
+     * Variables/Properties
+     */
+    private LocalDate date;
     private SimpleStringProperty name, description;
     private SimpleDoubleProperty duration;
 
+    /**
+     * Constructor gets all properties of the Activity
+     */
     public Activity(LocalDate date, String name, double duration, String description){
         this.date = date;
         this.name = new SimpleStringProperty(name);

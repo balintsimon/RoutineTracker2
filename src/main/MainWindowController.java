@@ -19,24 +19,23 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ResourceBundle;
-import content.*;
 import javafx.stage.Stage;
-
-import static jdk.nashorn.internal.runtime.regexp.joni.constants.AsmConstants.S;
 
 public class MainWindowController implements Initializable {
 
 
-
-    //configure the table
+    /**
+     * Configure the table
+     */
     @FXML private TableView<Activity> tableView;
     @FXML private TableColumn<Activity, LocalDate> dateColumn;
     @FXML private TableColumn<Activity, String> nameColumn;
     @FXML private TableColumn<Activity, Double> durationColumn;
     @FXML private TableColumn<Activity, String> descriptionColumn;
 
-
-
+    /**
+     * Initilalizes bindable properties
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //set up the columns in the table
@@ -49,9 +48,9 @@ public class MainWindowController implements Initializable {
         tableView.setItems(getActivities());
     }
 
-
-
-
+    /**
+     * Opens the AddActivity Window
+     */
     public void addActivityButtonPushed() throws IOException {
         Stage window = new Stage();
         FXMLLoader loader = new FXMLLoader();
@@ -67,13 +66,13 @@ public class MainWindowController implements Initializable {
         window.show();
     }
 
-
+    /**
+     * Exits the application
+     */
     public void exitButtonPushed(){
         Platform.exit();
         System.exit(0);
     }
-
-
 
     /**
      * This method will return an ObservableList of People objects
