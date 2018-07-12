@@ -14,27 +14,26 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-
 
 public class MainWindowController implements Initializable {
-    ArrayList<Activity> activities = new ArrayList<>();
-    ObservableList<Activity> oActivities = FXCollections.observableArrayList(getActivities());
+    private ArrayList<Activity> activities = new ArrayList<>();
+
 
     /**
      * Initialize 'File' Items
      */
+    private File defaultSavePath = null;
     @FXML private MenuItem newButton;
     @FXML private MenuItem loadButton;
     @FXML private MenuItem saveButton;
@@ -61,63 +60,95 @@ public class MainWindowController implements Initializable {
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
 
         //load dummy data
+        ObservableList<Activity> oActivities = FXCollections.observableArrayList(getActivities());
         tableView.setItems(oActivities);
+
+
     }
 
+
+/**
+ * ******************************************************File Menu******************************************************
+ */
     /**
-     * Opens the AddActivity Window
+     * New Button Logic
      */
-    public void addActivityButtonPushed() throws IOException {
-        Stage window = new Stage();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("AddActivityWindow.fxml"));
+    public void newButtonPushed() {
+        activities.clear();
+        ObservableList<Activity> oActivities = FXCollections.observableArrayList(activities);
+        tableView.setItems(oActivities);
 
-        Parent addActivityParent = loader.load();
-
-        window.setTitle("Add an activity");
-        Scene addActivityScene = new Scene(addActivityParent);
-        AddActivityWindowController controller = loader.getController();
-        controller.initData(oActivities);
-        window.setScene(addActivityScene);
-        window.show();
     }
 
     /**
      * Load Button Logic
      */
-    public void loadButtonPushed(){
-        loadButton.setOnAction(event -> {
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Load Database");
-            fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("*.rdb"));
+    public void loadButtonPushed() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Load Database");
 
-            File file = fileChooser.showOpenDialog(tableView.getScene().getWindow());
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("RDB files (*.rdb)", "*.rdb");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        File file = fileChooser.showOpenDialog(tableView.getScene().getWindow());
+
+        if (file != null) {
+            activities.clear();
+            activities = loadFromFile(file);
+            ObservableList<Activity> oActivities = FXCollections.observableArrayList(activities);
+            tableView.setItems(oActivities);
+            defaultSavePath = file;
+        }
+    }
+
+    /**
+     * Loading method
+     */
+    @SuppressWarnings("unchecked")
+    private ArrayList<Activity> loadFromFile(File file) {
+        ArrayList<Activity> loadedActivities = null;
 
 
-        });
+        try {
+            ObjectInputStream in = new ObjectInputStream((new FileInputStream(file)));
+
+            loadedActivities = (ArrayList<Activity>) in.readObject();
+            System.out.println("Load completed");
+        } catch (IOException ex) {
+            Logger.getLogger(MainWindowController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException e) {
+            System.out.println("Problem occured during deserialization");
+            e.printStackTrace();
+        }
+        return loadedActivities;
     }
 
     /**
      * Save Button Logic
      */
     public void saveButtonPushed() {
-        String filename = "savedDatabase";
-        FileOutputStream fos = null;
-        ObjectOutputStream out = null;
-        try {
-            fos = new FileOutputStream(filename);
-            out = new ObjectOutputStream(fos);
-            out.writeObject(activities);
-            out.close();
-            System.out.println("Save Completed");
+        if (defaultSavePath != null)
+            try {
+                FileOutputStream fos = new FileOutputStream(defaultSavePath);
+                ObjectOutputStream out = new ObjectOutputStream(fos);
+                out.writeObject(activities);
+                out.close();
+                System.out.println("Save Completed");
 
-        } catch (IOException e) {
-            e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        else {
+            saveAsButtonPushed();
         }
+
     }
 
-    public void saveAsButtonPushed(){
+    /**
+     * Save As Button Logic
+     */
+    public void saveAsButtonPushed() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Database");
 
@@ -130,6 +161,7 @@ public class MainWindowController implements Initializable {
 
         if (file != null) {
             saveToFile(activities, file);
+            defaultSavePath = file;
         }
     }
 
@@ -137,8 +169,8 @@ public class MainWindowController implements Initializable {
      * Saving method
      */
     private void saveToFile(ArrayList<Activity> activities, File file) {
-        FileOutputStream fos = null;
-        ObjectOutputStream out = null;
+        FileOutputStream fos;
+        ObjectOutputStream out;
         try {
             fos = new FileOutputStream(file);
             out = new ObjectOutputStream(fos);
@@ -152,20 +184,44 @@ public class MainWindowController implements Initializable {
     }
 
     /**
-     * Exits the application
+     * Exit Button logic
      */
-    public void exitButtonPushed(){
+    public void exitButtonPushed() {
         Platform.exit();
         System.exit(0);
     }
 
     /**
+     * **************************************************Activity Menu**************************************************
+     */
+    /**
+     * Add activity button logic
+     * -Opens the AddActivity Window-
+     */
+    public void addActivityButtonPushed() throws IOException {
+        Stage window = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("AddActivityWindow.fxml"));
+
+        Parent addActivityParent = loader.load();
+
+        window.setTitle("Add an activity");
+        Scene addActivityScene = new Scene(addActivityParent);
+        AddActivityWindowController controller = loader.getController();
+        controller.initData(getActivities(), tableView);
+        window.setScene(addActivityScene);
+        window.show();
+    }
+
+    public void removeActivityButtonPushed() {
+
+    }
+
+
+    /**
      * This method will return an ObservableList of People objects
      */
     private ArrayList<Activity> getActivities() {
-        activities.add(new Activity(LocalDate.now(), "Dili", 2, "Adéelltjeakheee"));
-        activities.add(new Activity(LocalDate.of(2018, Month.DECEMBER, 30), "Lafitykesz", 1, "bohohohohoroorororr"));
-        activities.add(new Activity(LocalDate.of (2018, Month.JULY, 31), "bodula$h", 100, "blueblekthbahtee"));
         return activities;
     }
 }

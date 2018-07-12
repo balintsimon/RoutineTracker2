@@ -2,6 +2,7 @@ package main;
 
 import content.Activity;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,7 +21,7 @@ public class AddActivityWindowController implements Initializable {
     /**
      * Initialize a tableView, so the addButton can make a new Activity in it
      */
-    ObservableList<Activity> activities;
+    ArrayList<Activity> activities;
     @FXML private Button closeButton;
     private TableView<Activity> tableView;
     @FXML private DatePicker dateInput;
@@ -31,8 +32,9 @@ public class AddActivityWindowController implements Initializable {
     /**
      * Get the original tableView
      */
-    public void initData(ObservableList<Activity> oActivities){
-        this.activities = oActivities;
+    public void initData(ArrayList<Activity> activities, TableView<Activity> tableView){
+        this.activities = activities;
+        this.tableView = tableView;
     }
 
     /**
@@ -56,5 +58,8 @@ public class AddActivityWindowController implements Initializable {
     public void addButtonPushed(){
         Activity newActivity = new Activity(dateInput.getValue(), nameInput.getText(), Double.parseDouble(durationInput.getText()), descriptionInput.getText());
         activities.add(newActivity);
+        System.out.println("Added");
+        ObservableList<Activity> oActivities = FXCollections.observableArrayList(activities);
+        tableView.setItems(oActivities);
     }
 }
