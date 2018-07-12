@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/main/MainWindowController.java" line="153" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/MainWindowController.java" line="159" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/AddActivityWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AddActivityWindowController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/AboutWindow.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/AboutWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Bálint.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Bálint.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Routine Tracker 2/main/MainWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Routine Tracker 2/main/MainWindowController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Routine Tracker 2/main/mainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Routine Tracker 2/main/mainWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainWindowController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/mainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mainWindow.fxml" afterDir="false" />
     </list>
@@ -68,16 +73,54 @@
       <file leaf-file-name="MainWindowController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/MainWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="73" column="23" lean-forward="true" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
+            <state relative-caret-position="209">
+              <caret line="70" column="79" selection-start-line="70" selection-start-column="79" selection-end-line="70" selection-end-column="79" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3206#3236#0" expanded="true" />
+                <element signature="method#newButtonPushed#0;class#MainWindowController#0" />
+                <element signature="method#loadButtonPushed#0;class#MainWindowController#0" />
+                <element signature="e#3856#3886#0" expanded="true" />
                 <element signature="method#loadFromFile#0;class#MainWindowController#0" />
+                <element signature="method#saveButtonPushed#0;class#MainWindowController#0" />
                 <element signature="method#saveAsButtonPushed#0;class#MainWindowController#0" />
                 <element signature="method#saveToFile#0;class#MainWindowController#0" />
-                <element signature="e#6283#6284#0" expanded="true" />
-                <element signature="e#6316#6317#0" expanded="true" />
+                <element signature="method#exitButtonPushed#0;class#MainWindowController#0" />
+                <element signature="method#addActivityButtonPushed#0;class#MainWindowController#0" />
+                <element signature="method#removeActivityButtonPushed#0;class#MainWindowController#0" />
+                <element signature="e#7942#7943#0" expanded="true" />
+                <element signature="e#7975#7976#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mainWindow.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/mainWindow.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AboutWindow.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/AboutWindow.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AboutWindowController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/AboutWindowController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="22" column="32" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -95,7 +138,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
+            <state relative-caret-position="368">
               <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -143,15 +186,17 @@
         <option value="$PROJECT_DIR$/src/main/PTableColumn.java" />
         <option value="$PROJECT_DIR$/src/main/AddActivityWindow.fxml" />
         <option value="$PROJECT_DIR$/src/main/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/mainWindow.fxml" />
         <option value="$PROJECT_DIR$/src/content/Activity.java" />
         <option value="$PROJECT_DIR$/src/main/AddActivityWindowController.java" />
+        <option value="$PROJECT_DIR$/src/main/mainWindow.fxml" />
+        <option value="$PROJECT_DIR$/src/main/AboutWindow.fxml" />
+        <option value="$PROJECT_DIR$/src/main/AboutWindowController.java" />
         <option value="$PROJECT_DIR$/src/main/MainWindowController.java" />
       </list>
     </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-29" />
     <option name="y" value="156" />
     <option name="width" value="1382" />
@@ -343,9 +388,9 @@
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49930555" visible="true" weight="0.24967149" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49930555" visible="true" weight="0.29040736" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.19305556" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.22152779" />
       <window_info anchor="right" id="Theme Preview" order="4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Application Servers" order="7" />
@@ -388,12 +433,18 @@
           <caret line="108" column="53" lean-forward="true" selection-start-line="108" selection-start-column="53" selection-end-line="108" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3206#3236#0" expanded="true" />
+            <element signature="method#newButtonPushed#0;class#MainWindowController#0" />
+            <element signature="method#loadButtonPushed#0;class#MainWindowController#0" />
+            <element signature="e#3856#3886#0" expanded="true" />
             <element signature="method#loadFromFile#0;class#MainWindowController#0" />
+            <element signature="method#saveButtonPushed#0;class#MainWindowController#0" />
             <element signature="method#saveAsButtonPushed#0;class#MainWindowController#0" />
             <element signature="method#saveToFile#0;class#MainWindowController#0" />
-            <element signature="e#6283#6284#0" expanded="true" />
-            <element signature="e#6316#6317#0" expanded="true" />
+            <element signature="method#exitButtonPushed#0;class#MainWindowController#0" />
+            <element signature="method#addActivityButtonPushed#0;class#MainWindowController#0" />
+            <element signature="method#removeActivityButtonPushed#0;class#MainWindowController#0" />
+            <element signature="e#7942#7943#0" expanded="true" />
+            <element signature="e#7975#7976#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -568,24 +619,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/mainWindow.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="25" column="21" lean-forward="true" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/newFile.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -630,18 +663,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/MainWindowController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/kidicon.ico">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="73" column="23" lean-forward="true" selection-start-line="73" selection-start-column="23" selection-end-line="73" selection-end-column="23" />
+        <state relative-caret-position="368">
+          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3206#3236#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/mainWindow.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/AboutWindow.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="19" column="13" lean-forward="true" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/AboutWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="22" column="32" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/MainWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="70" column="79" selection-start-line="70" selection-start-column="79" selection-end-line="70" selection-end-column="79" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#newButtonPushed#0;class#MainWindowController#0" />
+            <element signature="method#loadButtonPushed#0;class#MainWindowController#0" />
+            <element signature="e#3856#3886#0" expanded="true" />
             <element signature="method#loadFromFile#0;class#MainWindowController#0" />
+            <element signature="method#saveButtonPushed#0;class#MainWindowController#0" />
             <element signature="method#saveAsButtonPushed#0;class#MainWindowController#0" />
             <element signature="method#saveToFile#0;class#MainWindowController#0" />
-            <element signature="e#6283#6284#0" expanded="true" />
-            <element signature="e#6316#6317#0" expanded="true" />
+            <element signature="method#exitButtonPushed#0;class#MainWindowController#0" />
+            <element signature="method#addActivityButtonPushed#0;class#MainWindowController#0" />
+            <element signature="method#removeActivityButtonPushed#0;class#MainWindowController#0" />
+            <element signature="e#7942#7943#0" expanded="true" />
+            <element signature="e#7975#7976#0" expanded="true" />
           </folding>
         </state>
       </provider>

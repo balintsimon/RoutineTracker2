@@ -5,15 +5,21 @@ import content.Activity;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -28,8 +34,9 @@ import java.util.logging.Logger;
 
 public class MainWindowController implements Initializable {
     private ArrayList<Activity> activities = new ArrayList<>();
-
-
+/**
+ * ***************************************************Initialziation****************************************************
+ */
     /**
      * Initialize 'File' Items
      */
@@ -58,41 +65,40 @@ public class MainWindowController implements Initializable {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         durationColumn.setCellValueFactory(new PropertyValueFactory<>("duration"));
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<>("description"));
-
         //load dummy data
         ObservableList<Activity> oActivities = FXCollections.observableArrayList(getActivities());
         tableView.setItems(oActivities);
-
+        tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
     }
-
-
 /**
  * ******************************************************File Menu******************************************************
  */
     /**
      * New Button Logic
      */
-    public void newButtonPushed() {
+    @FXML private void newButtonPushed() {
         activities.clear();
         ObservableList<Activity> oActivities = FXCollections.observableArrayList(activities);
         tableView.setItems(oActivities);
 
     }
-
     /**
      * Load Button Logic
      */
-    public void loadButtonPushed() {
+    @FXML private void loadButtonPushed() {
+        //Init
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Load Database");
-
+        //Set extensions
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("RDB files (*.rdb)", "*.rdb");
         fileChooser.getExtensionFilters().add(extFilter);
-
+        //Get the current scene
         File file = fileChooser.showOpenDialog(tableView.getScene().getWindow());
 
+        //If a file was chosen, clear current list and make it equal to the loaded list
+        //else - do nothing
         if (file != null) {
             activities.clear();
             activities = loadFromFile(file);
@@ -127,7 +133,7 @@ public class MainWindowController implements Initializable {
     /**
      * Save Button Logic
      */
-    public void saveButtonPushed() {
+    @FXML private void saveButtonPushed() {
         if (defaultSavePath != null)
             try {
                 FileOutputStream fos = new FileOutputStream(defaultSavePath);
@@ -148,7 +154,7 @@ public class MainWindowController implements Initializable {
     /**
      * Save As Button Logic
      */
-    public void saveAsButtonPushed() {
+    @FXML private void saveAsButtonPushed() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Save Database");
 
@@ -186,19 +192,19 @@ public class MainWindowController implements Initializable {
     /**
      * Exit Button logic
      */
-    public void exitButtonPushed() {
+    @FXML private void exitButtonPushed() {
         Platform.exit();
         System.exit(0);
     }
 
-    /**
-     * **************************************************Activity Menu**************************************************
-     */
+/**
+ * **************************************************Activity Menu**************************************************
+ */
     /**
      * Add activity button logic
      * -Opens the AddActivity Window-
      */
-    public void addActivityButtonPushed() throws IOException {
+    @FXML private void addActivityButtonPushed() throws IOException {
         Stage window = new Stage();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("AddActivityWindow.fxml"));
@@ -212,10 +218,33 @@ public class MainWindowController implements Initializable {
         window.setScene(addActivityScene);
         window.show();
     }
-
-    public void removeActivityButtonPushed() {
-
+    /**
+     * Removes selected rows from the table
+     */
+    @FXML private void removeActivityButtonPushed() {
+        activities.removeAll(tableView.getSelectionModel().getSelectedItems());
+        ObservableList<Activity> oActivities = FXCollections.observableArrayList(activities);
+        tableView.setItems(oActivities);
     }
+    /**
+     * ****************************************************Help Menu****************************************************
+     */
+    @FXML private void aboutButtonPushed() throws IOException {
+        Stage window = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("AboutWindow.fxml"));
+
+        Parent aboutParent = loader.load();
+
+        window.setTitle("About Routine Tracker 2");
+        Scene aboutScene = new Scene(aboutParent);
+        AboutWindowController controller = loader.getController();
+        window.setScene(aboutScene);
+        window.show();
+    }
+
+
+
 
 
     /**

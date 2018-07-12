@@ -25,7 +25,7 @@
             <Menu mnemonicParsing="false" text="Activities">
               <items>
                 <MenuItem fx:id="addActivity" mnemonicParsing="false" onAction="#addActivityButtonPushed" text="Add Activity..." />
-                  <MenuItem fx:id="removeActivity" mnemonicParsing="false" text="Remove Activity..." />
+                  <MenuItem fx:id="removeActivity" mnemonicParsing="false" onAction="#removeActivityButtonPushed" text="Remove Activity..." />
               </items>
             </Menu>
           <Menu mnemonicParsing="false" text="View">
@@ -38,7 +38,7 @@
           </Menu>
             <Menu mnemonicParsing="false" text="Help">
                <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem fx:id="aboutButton" mnemonicParsing="false" onAction="#aboutButtonPushed" text="About" />
                </items>
             </Menu>
         </menus>
