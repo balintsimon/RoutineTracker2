@@ -2,12 +2,17 @@ package content;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleStringProperty;
+
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  * Main Activity class
  */
-public class Activity {
+public class Activity implements Serializable {
+
+
+    private static final long serialVersionUID = -8669535159068103889L;
 
     /**
      * Getters/Setters
@@ -21,55 +26,43 @@ public class Activity {
     }
 
     public String getName() {
-        return name.get();
-    }
-
-    public SimpleStringProperty nameProperty() {
         return name;
     }
 
     public void setName(String name) {
-        this.name.set(name);
+        this.name = name;
     }
 
     public String getDescription() {
-        return description.get();
-    }
-
-    public SimpleStringProperty descriptionProperty() {
         return description;
     }
 
     public void setDescription(String description) {
-        this.description.set(description);
+        this.description = description;
     }
 
     public double getDuration() {
-        return duration.get();
-    }
-
-    public SimpleDoubleProperty durationProperty() {
         return duration;
     }
 
-    public void setDuration(int duration) {
-        this.duration.set(duration);
+    public void setDuration(double duration) {
+        this.duration = duration;
     }
 
     /**
      * Variables/Properties
      */
     private LocalDate date;
-    private SimpleStringProperty name, description;
-    private SimpleDoubleProperty duration;
+    private String name, description;
+    private Double duration;
 
     /**
      * Constructor gets all properties of the Activity
      */
     public Activity(LocalDate date, String name, double duration, String description){
         this.date = date;
-        this.name = new SimpleStringProperty(name);
-        this.description = new SimpleStringProperty(description);
-        this.duration = new SimpleDoubleProperty(duration);
+        this.name = name;
+        this.description = description;
+        this.duration = duration;
     }
 }
